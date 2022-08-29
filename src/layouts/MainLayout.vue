@@ -15,7 +15,7 @@
                     Quasar App
                 </q-toolbar-title>
 
-                <div>Quasar v{{ $q.version }}</div>
+                <!-- div>Quasar v{{ $q.version }}</div -->
             </q-toolbar>
         </q-header>
 
@@ -32,7 +32,7 @@
                 </q-item-label>
 
                 <EssentialLink
-                    v-for="link in essentialLinks"
+                    v-for="link in linksList"
                     :key="link.title"
                     v-bind="link"
                 />
@@ -48,33 +48,8 @@
 <script>
 import { defineComponent, ref } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
+import { linksList } from '../router/link-list'
 
-const linksList = [
-    {
-        title: "Index",
-        caption: "principal",
-        icon: "las la-home",
-        link: "home"
-    },
-    {
-        title: "Typhography",
-        caption: "Tipos de letra en Quasar",
-        icon: "las la-italic",
-        link: "typhography"
-    },
-    {
-        title: "Flex",
-        caption: "Flexbox en Quasar",
-        icon: "las la-th-large",
-        link: "flex"
-    },
-    {
-        title: "Docs",
-        caption: "quasar.dev",
-        icon: "las la-graduation-cap",
-        link: "https://quasar.dev"
-    },
-];
 
 export default defineComponent({
     name: "MainLayout",
@@ -87,7 +62,7 @@ export default defineComponent({
         const leftDrawerOpen = ref(false);
 
         return {
-            essentialLinks: linksList,
+            linksList,
             leftDrawerOpen,
             toggleLeftDrawer() {
                 leftDrawerOpen.value = !leftDrawerOpen.value;
