@@ -49,7 +49,7 @@
 import { defineComponent, ref, computed } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
 import { linksList } from '../router/link-list'
-import useStore from '../store'
+import useUI from '../composables/useUI'
 
 export default defineComponent({
     name: "MainLayout",
@@ -60,20 +60,13 @@ export default defineComponent({
 
     setup() {
 
-        const store = useStore()
-
         const leftDrawerOpen = ref(false);
+        const { sideMenuOpen, toggleSideMenu } = useUI()
 
         return {
-            sideMenuOpen: computed(() => store.getters['ui/isSideMenuOpen']),
-            toggleSideMenu() {
-                store.commit('ui/toggleSideMenu')
-            },
+            sideMenuOpen,
+            toggleSideMenu,
             linksList,
-            leftDrawerOpen,
-            toggleLeftDrawer() {
-                leftDrawerOpen.value = !leftDrawerOpen.value;
-            }
         };
     }
 });

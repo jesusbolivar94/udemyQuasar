@@ -20,8 +20,9 @@
 
         <q-btn
             color="primary"
-            label="Abrir menú lateral"
+            :label="sideMenuOpen ? 'Cerrar menu lateral' : 'Abrir menú lateral'"
             class="q-mt-md"
+            @click="toggleSideMenu"
         />
 
     </q-page>
@@ -29,8 +30,18 @@
 
 <script>
 import { defineComponent } from "vue";
+import useUI from '../composables/useUI'
 
 export default defineComponent({
-    name: "TyphographyPage"
+    name: "TyphographyPage",
+    setup() {
+
+        const { toggleSideMenu, sideMenuOpen } = useUI()
+
+        return {
+            toggleSideMenu,
+            sideMenuOpen,
+        }
+    }
 });
 </script>
