@@ -18,6 +18,12 @@ export const linksList = [
         link: "flex"
     },
     {
+        title: "Dialogs",
+        caption: "Alertas, dialogos y confirmaciones",
+        icon: "las la-th-large",
+        link: "dialog"
+    },
+    {
         title: "Docs",
         caption: "quasar.dev",
         icon: "las la-graduation-cap",
